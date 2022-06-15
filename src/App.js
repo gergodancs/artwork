@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import ArtworkDetails from "./components/ArtworkDetails";
-import ArtworkList from "./components/ArtworkList";
+//import ArtworkList from "./components/ArtworkList";
 import Favourites from "./components/Favourites";
 import Header from "./components/Header";
 
@@ -9,7 +9,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Header />} />
       <Route path="/artworkdetails" element={<ArtworkDetails />} />
-      <Route path="/artworklist" element={<ArtworkList />} />
+
       <Route path="/favourites" element={<Favourites />} />
     </Routes>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { useEffect } from "react";
+import ArtworkList from "./ArtworkList";
 //import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -7,14 +8,19 @@ const Header = () => {
   const [numberOfArt, setNumberOfArt] = useState(25);
   const [page, setPage] = useState(1);
   const [artwork, setArtworks] = useState([]);
+  let artId = [];
 
   let url = `https://api.artic.edu/api/v1/artworks/search?q=${enteredText}&page=${page}&limit=${numberOfArt}`;
 
   const fetchArtworks = useCallback(() => {
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setArtworks(data));
+      .then((data) => {
+        setArtworks(data?.data);
+      });
   }, [url]);
+
+  artId = artwork.map((item) => item.id);
 
   useEffect(() => {
     fetchArtworks();
@@ -26,6 +32,7 @@ const Header = () => {
     if (page === 1) return;
     else {
       console.log(artwork);
+      console.log(artId);
       return setPage(page - 1);
     }
   };
