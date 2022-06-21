@@ -8,9 +8,8 @@ const Header = () => {
   const [numberOfArt, setNumberOfArt] = useState(25);
   const [page, setPage] = useState(1);
   const [artwork, setArtworks] = useState([]);
-  let artId = [];
 
-  let url = `https://api.artic.edu/api/v1/artworks/search?q=${enteredText}&page=${page}&limit=${numberOfArt}`;
+  let url = `https://api.artic.edu/api/v1/artworks/search?q=${enteredText}&page=${page}&limit=${numberOfArt}&fields=id,title,image_id,thumbnail`;
 
   const fetchArtworks = useCallback(() => {
     fetch(url)
@@ -20,19 +19,19 @@ const Header = () => {
       });
   }, [url]);
 
-  artId = artwork.map((item) => item.id);
-
   useEffect(() => {
-    fetchArtworks();
-  }, [fetchArtworks, page]);
+    if (!enteredText.length || enteredText.length < 3) {
+      return;
+    } else {
+      fetchArtworks();
+    }
+  }, [fetchArtworks, page, enteredText]);
 
   const selectHandler = (e) => setNumberOfArt(e.target.value);
 
   const decrementPage = () => {
     if (page === 1) return;
     else {
-      console.log(artwork);
-      console.log(artId);
       return setPage(page - 1);
     }
   };
@@ -41,7 +40,6 @@ const Header = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     fetchArtworks();
-    console.log(artwork);
   };
   return (
     <div>
@@ -64,6 +62,21 @@ const Header = () => {
       </form>
       <button onClick={decrementPage}>vissza</button>
       <button onClick={incrementPage}>elore</button>
+      <div className="results__container">
+        {artwork &&
+          artwork.map((item) => {
+            return (
+              <div className="card" key={item.id}>
+                <img
+                  src={`https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`}
+                  alt=""
+                />
+                <h5>{item.title}</h5>
+                <button>Add to favourite</button>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 };
