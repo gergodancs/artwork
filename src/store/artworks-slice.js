@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   loading: false,
   results: [],
-
+  details: [],
   error: "",
   page: 1,
   numberOfArts: 25,
@@ -15,6 +15,9 @@ const artworkSlice = createSlice({
   reducers: {
     addData(state, action) {
       state.results = action.payload.data;
+    },
+    addDetails(state, action) {
+      state.details = action.payload.data;
     },
     incerementPage(state) {
       console.log("hello");
@@ -52,6 +55,28 @@ export const fetchArtworks = (searchText, page, numofArts) => {
       dispatch(artworkSlice.actions.addData(results));
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const fetchDetails = (id) => {
+  return async (dispatch) => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `https://api.artic.edu/api/v1/artworks/${id}`
+      );
+      if (!response.ok) {
+        throw new Error(response.message);
+      }
+      const data = await response.json();
+      console.log(data);
+      return data;
+    };
+    try {
+      const results = await fetchData();
+      dispatch(artworkSlice.actions.addDetails(results));
+    } catch (error) {
+      console.log("nem jo");
     }
   };
 };
