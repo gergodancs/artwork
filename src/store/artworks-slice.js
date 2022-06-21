@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   results: [],
   details: [],
+  favourites: [],
   error: "",
   page: 1,
   numberOfArts: 25,
@@ -37,8 +38,27 @@ const artworkSlice = createSlice({
     getImage(state, action) {
       state.imageUrl = action.payload;
     },
-    addFavourites(state, action) {},
-    replaceFavourite(state, action) {},
+    addFavourites(state, action) {
+      const newItem = action.payload;
+      const existingItem = state.favourites.find(
+        (item) => item.id === newItem.id
+      );
+      if (!existingItem) {
+        state.favourites.push({
+          id: newItem.id,
+          title: newItem.title,
+          date: newItem.date_display,
+          type: newItem.artwork_type_title,
+          img: newItem.imgUrl,
+        });
+      } else {
+        return alert("already in");
+      }
+    },
+    replaceFavourite(state, action) {
+      const id = action.payload;
+      state.favourites = state.favourites.filter((item) => item.id !== id);
+    },
   },
 });
 
