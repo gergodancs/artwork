@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import { fetchDetails } from "../store/artworks-slice";
+import { artworkActions } from "../store/artworks-slice";
 const ArtworkList = () => {
   const dispatch = useDispatch();
   const results = useSelector((state) => state.artwork.results);
-  const details = useSelector((state) => state.artwork.details);
-  const getDetails = (id) => {
+  const getDetails = (id, imgId) => {
+    dispatch(
+      artworkActions.getImage(
+        `https://www.artic.edu/iiif/2/${imgId}/full/843,/0/default.jpg`
+      )
+    );
     dispatch(fetchDetails(id));
   };
-  console.log(details);
 
   return (
     <div className="results__container">

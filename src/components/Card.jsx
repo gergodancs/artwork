@@ -1,9 +1,6 @@
-import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
-  //   const [details, setDetails] = useState([]);
-  const dispatch = useDispatch();
-
   return (
     <div className="card">
       <img
@@ -11,7 +8,9 @@ const Card = (props) => {
         alt=""
       />
       <h5>{props.title}</h5>
-      <button onClick={() => props.getDetails(props.id)}>Show Details</button>
+      <button onClick={() => props.getDetails(props.id, props.imgId)}>
+        <Link to="/details">Show Details</Link>
+      </button>
     </div>
   );
 };

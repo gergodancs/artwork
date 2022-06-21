@@ -7,6 +7,7 @@ const initialState = {
   error: "",
   page: 1,
   numberOfArts: 25,
+  imageUrl: "",
 };
 
 const artworkSlice = createSlice({
@@ -32,6 +33,9 @@ const artworkSlice = createSlice({
     },
     selectNumOfArts(state, action) {
       state.numberOfArts = action.payload;
+    },
+    getImage(state, action) {
+      state.imageUrl = action.payload;
     },
     addFavourites(state, action) {},
     replaceFavourite(state, action) {},
