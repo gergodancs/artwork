@@ -40,6 +40,7 @@ const artworkSlice = createSlice({
     },
     addFavourites(state, action) {
       const newItem = action.payload;
+
       const existingItem = state.favourites.find(
         (item) => item.id === newItem.id
       );
@@ -47,9 +48,9 @@ const artworkSlice = createSlice({
         state.favourites.push({
           id: newItem.id,
           title: newItem.title,
-          date: newItem.date_display,
-          type: newItem.artwork_type_title,
-          img: newItem.imgUrl,
+          date: newItem.date,
+          type: newItem.type,
+          img: newItem.img,
         });
       } else {
         return alert("already in");

@@ -49,6 +49,7 @@ const SearchForm = () => {
       </form>
       <button onClick={decrementPage}>vissza</button>
       <button onClick={incrementPage}>elore</button>
+      <Link to="/favourites">Favs</Link>
     </div>
   );
 };

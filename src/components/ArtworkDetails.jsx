@@ -20,9 +20,6 @@ const ArtworkDetails = () => {
     );
   };
 
-  console.log(favs);
-  console.log(imgUrl);
-
   return (
     <div>
       <ul>
