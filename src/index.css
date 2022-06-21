@@ -18,6 +18,13 @@ code {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 }
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 100%;
+}
 .results__container div {
   padding: 10px;
   background-color: rgba(34, 34, 34, 0.212);

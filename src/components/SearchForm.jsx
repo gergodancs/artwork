@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchArtworks } from "../store/artworks-slice";
 import { artworkActions } from "../store/artworks-slice";
 import { Link } from "react-router-dom";
+import "./styles/searchbar.css";
 
 const SearchForm = () => {
   const [enteredText, setEnteredText] = useState("");
   const dispatch = useDispatch();
-  //const results = useSelector((state) => state.artwork.results);
+
   const numofArts = useSelector((state) => state.artwork.numberOfArts);
   const page = useSelector((state) => state.artwork.page);
 
@@ -29,7 +30,7 @@ const SearchForm = () => {
     console.log(enteredText);
   };
   return (
-    <div>
+    <div className="search__bar">
       <form onSubmit={submitHandler}>
         <input
           onChange={(e) => setEnteredText(e.target.value)}
@@ -45,11 +46,16 @@ const SearchForm = () => {
           <option value="20">20</option>
           <option value="25">25</option>
         </select>
-        <button>Search</button>
+        <button type="submit">
+          <Link to="/results">Search</Link>
+        </button>
+        <button type="button">
+          <Link to="/favourites">Favs</Link>
+        </button>
       </form>
+
       <button onClick={decrementPage}>vissza</button>
       <button onClick={incrementPage}>elore</button>
-      <Link to="/favourites">Favs</Link>
     </div>
   );
 };
