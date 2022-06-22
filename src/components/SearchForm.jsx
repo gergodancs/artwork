@@ -29,6 +29,10 @@ const SearchForm = () => {
   };
   return (
     <div className="search__bar">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/3/32/Art_Institute_of_Chicago_logo.svg"
+        alt="logo"
+      />
       <form onSubmit={submitHandler}>
         <input
           onChange={(e) => setEnteredText(e.target.value)}

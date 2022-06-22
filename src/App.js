@@ -7,12 +7,13 @@ import Landing from "./components/Landing";
 function App() {
   return (
     <div className="container">
-      <Landing />
-      <Routes>
-        <Route path="/details" element={<ArtworkDetails />} />
-        <Route path="/results" element={<ArtworkList />} />
-        <Route path="/favourites" element={<Favourites />} />
-      </Routes>
+      <Landing>
+        <Routes>
+          <Route path="/details" element={<ArtworkDetails />} />
+          <Route path="/results" element={<ArtworkList />} />
+          <Route path="/favourites" element={<Favourites />} />
+        </Routes>
+      </Landing>
     </div>
   );
 }
