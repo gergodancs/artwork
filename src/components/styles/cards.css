@@ -11,3 +11,18 @@
 .card > img {
   max-height: 300px;
 }
+.card > button {
+  border: none;
+  height: 30px;
+  width: 150px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  background-color: rgb(243, 248, 253);
+  box-shadow: 1px 1px 3px rgba(34, 34, 34, 0.466);
+  transition-duration: 0.2s;
+}
+.card > button:hover {
+  transform: scale(0.98);
+  box-shadow: 1px 1px 3px rgba(34, 34, 34, 0.466) inset;
+  background-color: white;
+}

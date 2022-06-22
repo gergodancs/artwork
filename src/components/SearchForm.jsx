@@ -7,7 +7,6 @@ import "./styles/searchbar.css";
 
 const SearchForm = () => {
   const [enteredText, setEnteredText] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const dispatch = useDispatch();
 
   const numofArts = useSelector((state) => state.artwork.numberOfArts);
@@ -21,13 +20,12 @@ const SearchForm = () => {
     else {
       dispatch(fetchArtworks(enteredText, page, numofArts));
     }
-  }, [dispatch, enteredText, page, numofArts, isSubmitted]);
+  }, [dispatch, enteredText, page, numofArts]);
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     dispatch(fetchArtworks(enteredText, page, numofArts));
-    console.log(enteredText);
   };
   return (
     <div className="search__bar">

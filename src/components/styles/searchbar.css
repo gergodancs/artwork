@@ -33,8 +33,18 @@ select {
 form > button {
   height: 45px;
   width: 120px;
-  border-radius: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(243, 248, 253);
+  box-shadow: 1px 1px 3px rgba(34, 34, 34, 0.466);
+  transition-duration: 0.2s;
 }
+form > button:hover {
+  transform: scale(0.98);
+  box-shadow: 1px 1px 3px rgba(34, 34, 34, 0.466) inset;
+  background-color: white;
+}
+
 a {
   text-decoration: none;
 }

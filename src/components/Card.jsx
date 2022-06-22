@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import "./styles/cards.css";
 import { useSelector, useDispatch } from "react-redux";
 import { artworkActions } from "../store/artworks-slice";
-import { fetchDetails } from "../store/artworks-slice";
 
 const Card = (props) => {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.artwork.details);
-  const favs = useSelector((state) => state.artwork.favourites);
+
+  const imgUrl = useSelector((state) => state.artwork.imageUrl);
 
   const addFav = () => {
     dispatch(
@@ -15,16 +15,16 @@ const Card = (props) => {
         id: details.id,
         title: details.title,
         date: details.date_display,
-        type: details.type,
-        img: `https://www.artic.edu/iiif/2/${props.imgId}/full/843,/0/default.jpg`,
+        type: details.artwork_type_title,
+        img: imgUrl,
       })
     );
   };
-  const onClickAddFav = () => {
-    props.getDetails(props.id, props.imgId);
-    addFav();
-    console.log(favs);
+  const onClickAddFav = (id, imgId) => {
+    props.getDetails(id, imgId);
+    if (details.title) return addFav(id, imgId);
   };
+
   return (
     <div className="card">
       <img
@@ -35,7 +35,9 @@ const Card = (props) => {
       <button onClick={() => props.getDetails(props.id, props.imgId)}>
         <Link to="/details">Show Details</Link>
       </button>
-      <button onClick={() => onClickAddFav()}>Add to Favourites</button>
+      <button onClick={() => onClickAddFav(props.id, props.imgId)}>
+        Add to Favourites
+      </button>
     </div>
   );
 };

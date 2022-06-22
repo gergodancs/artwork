@@ -31,7 +31,7 @@ const ArtworkDetails = () => {
           <img src={imgUrl} alt="pics" />
         </li>
       </ul>
-      <button onClick={addFav}>Favourite</button>
+      <button onClick={addFav}>Add Favourite</button>
     </div>
   );
 };

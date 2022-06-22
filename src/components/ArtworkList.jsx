@@ -19,13 +19,13 @@ const ArtworkList = () => {
   const decrementPage = () => dispatch(artworkActions.decrementPage());
 
   const incrementPage = () => dispatch(artworkActions.incerementPage());
-  console.log(results);
+
   return (
     <div className="artworks_wrapper">
       <div className="pagination">
-        <button onClick={decrementPage}>vissza</button>
+        <button onClick={decrementPage}>Back</button>
         <span>{page}</span>
-        <button onClick={incrementPage}>elore</button>
+        <button onClick={incrementPage}>Next</button>
       </div>
       <div className="results__container">
         {results.map((item) => {

@@ -9,18 +9,19 @@ const Favourites = () => {
   const removeFav = (id) => {
     dispatch(artworkActions.replaceFavourite(id));
   };
+
   return (
     <div className="favs__container">
       {favourites.map((item) => {
         return (
-          <div key={item.id}>
-            <ul>
-              <li>Title: {item.title}</li>
-              <li>Date: {item.date}</li>
-              <li>Type: {item.type}</li>
+          <div key={item?.id}>
+            <ul key={item?.id}>
+              <li>Title: {item?.title}</li>
+              <li>Date: {item?.date}</li>
+              <li>Type: {item?.type}</li>
 
               <li>
-                <img src={item.img} alt="pics" />
+                <img src={item?.img} alt="pics" />
               </li>
               <li>
                 <button onClick={() => removeFav(item.id)}>Remove</button>
