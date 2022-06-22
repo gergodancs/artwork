@@ -1,0 +1,28 @@
+.favs__container {
+  position: relative;
+  top: 100px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.favs__container > div > ul > li > img {
+  max-width: 300px;
+  max-height: 400px;
+}
+
+.favs__container > div > ul {
+  list-style: none;
+  padding: 0;
+}
+.favs__container > div {
+  background-color: rgb(222, 223, 224);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.377);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

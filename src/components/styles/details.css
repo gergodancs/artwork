@@ -1,0 +1,24 @@
+.details__container {
+  position: relative;
+  margin: 0 auto;
+  width: 60%;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(222, 223, 224);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.377);
+}
+.details__container > ul > li > img {
+  max-width: 600px;
+  max-height: 400px;
+}
+.details__container > button {
+  width: 100px;
+}
+.details__container > ul {
+  list-style: none;
+}

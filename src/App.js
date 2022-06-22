@@ -7,8 +7,8 @@ import Landing from "./components/Landing";
 function App() {
   return (
     <div className="container">
+      <Landing />
       <Routes>
-        <Route path="/" element={<Landing />} />
         <Route path="/details" element={<ArtworkDetails />} />
         <Route path="/results" element={<ArtworkList />} />
         <Route path="/favourites" element={<Favourites />} />

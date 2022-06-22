@@ -1,0 +1,21 @@
+.results__container {
+  height: 600x;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow-y: auto;
+  margin: 0 auto;
+  gap: 20px;
+  padding: 10px;
+}
+.results__container > div > img {
+  max-width: 300px;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+.artworks_wrapper {
+  position: relative;
+  top: 90px;
+}

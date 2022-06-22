@@ -7,6 +7,7 @@ import "./styles/searchbar.css";
 
 const SearchForm = () => {
   const [enteredText, setEnteredText] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const dispatch = useDispatch();
 
   const numofArts = useSelector((state) => state.artwork.numberOfArts);
@@ -15,17 +16,16 @@ const SearchForm = () => {
   const selectHandler = (e) =>
     dispatch(artworkActions.selectNumOfArts(e.target.value));
 
-  const decrementPage = () => dispatch(artworkActions.decrementPage());
-
-  const incrementPage = () => dispatch(artworkActions.incerementPage());
-
   useEffect(() => {
     if (enteredText.length < 3) return;
-    dispatch(fetchArtworks(enteredText, page, numofArts));
-  }, [dispatch, enteredText, page, numofArts]);
+    else {
+      dispatch(fetchArtworks(enteredText, page, numofArts));
+    }
+  }, [dispatch, enteredText, page, numofArts, isSubmitted]);
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     dispatch(fetchArtworks(enteredText, page, numofArts));
     console.log(enteredText);
   };
@@ -53,9 +53,6 @@ const SearchForm = () => {
           <Link to="/favourites">Favs</Link>
         </button>
       </form>
-
-      <button onClick={decrementPage}>vissza</button>
-      <button onClick={incrementPage}>elore</button>
     </div>
   );
 };
