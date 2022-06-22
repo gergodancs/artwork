@@ -7,7 +7,6 @@ const ArtworkDetails = () => {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.artwork.details);
   const imgUrl = useSelector((state) => state.artwork.imageUrl);
-  const favs = useSelector((state) => state.artwork.favourites);
 
   const addFav = () => {
     dispatch(

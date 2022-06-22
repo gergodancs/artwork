@@ -19,7 +19,7 @@ const ArtworkList = () => {
   const decrementPage = () => dispatch(artworkActions.decrementPage());
 
   const incrementPage = () => dispatch(artworkActions.incerementPage());
-
+  console.log(results);
   return (
     <div className="artworks_wrapper">
       <div className="pagination">

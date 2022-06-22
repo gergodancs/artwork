@@ -101,7 +101,7 @@ export const fetchDetails = (id) => {
       const results = await fetchData();
       dispatch(artworkSlice.actions.addDetails(results));
     } catch (error) {
-      console.log("nem jo");
+      console.log(error);
     }
   };
 };
